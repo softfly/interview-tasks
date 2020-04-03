@@ -1,0 +1,22 @@
+language: java
+
+cache:
+  directories:
+    - $HOME/.m2
+
+script:
+  - "mvn verify -Pjacoco"
+
+after_success:
+  - "mvn -Pjacoco coveralls:report"
+  - "mvn -Pjavadoc site"
+  - "mvn site:stage"
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  local_dir: target/staging
+  on:
+    branch: master 

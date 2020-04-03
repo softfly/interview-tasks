@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<name>borrowercalc-root</name>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.zopa.borrowercalc</groupId>
+	<artifactId>borrowercalc-root</artifactId>
+	<version>1.0-FINAL</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>borrowercalc-app</module>
+		<module>borrowercalc-common</module>
+		<module>borrowercalc-model</module>
+		<module>borrowercalc-service</module>
+		<module>borrowercalc-service-client</module>
+
+		<module>borrowercalc-common-test</module>
+	</modules>
+
+	<properties>
+		<!-- Explicitly declaring the source encoding eliminates the following
+			message: -->
+		<!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered
+			resources, i.e. build is platform dependent! -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- maven-compiler-plugin -->
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>2.2.0.M2</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zopa.borrowercalc</groupId>
+				<artifactId>borrowercalc-model</artifactId>
+				<version>1.0-FINAL</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zopa.borrowercalc</groupId>
+				<artifactId>borrowercalc-common</artifactId>
+				<version>1.0-FINAL</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zopa.borrowercalc</groupId>
+				<artifactId>borrowercalc-service</artifactId>
+				<version>1.0-FINAL</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zopa.borrowercalc</groupId>
+				<artifactId>borrowercalc-service-client</artifactId>
+				<version>1.0-FINAL</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zopa.borrowercalc</groupId>
+				<artifactId>borrowercalc-common-test</artifactId>
+				<scope>test</scope>
+				<version>1.0-FINAL</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
+				<scope>test</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+</project>

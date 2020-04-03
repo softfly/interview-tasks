@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>borrowercalc-root</artifactId>
+		<groupId>com.zopa.borrowercalc</groupId>
+		<version>1.0-FINAL</version>
+	</parent>
+
+	<artifactId>borrowercalc-service</artifactId>
+	<name>borrowercalc-service</name>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.zopa.borrowercalc</groupId>
+			<artifactId>borrowercalc-model</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.zopa.borrowercalc</groupId>
+			<artifactId>borrowercalc-common</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.zopa.borrowercalc</groupId>
+			<artifactId>borrowercalc-common-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+		</dependency>
+
+		<!-- BEGIN jaxb2-maven-plugin Fix for JDK 11 -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
+            <version>1.2.1</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- END jaxb2-maven-plugin Fix for JDK 11 -->
+
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>2.4</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<sources>
+						<source>src/main/resources/xsd/dummy.xsd</source><!-- jaxb2-maven-plugin Fix for JDK 11 -->
+                    	<source>src/main/resources/xsd/BorrowerCalculator.xsd</source>
+                    </sources>
+				</configuration>
+				<dependencies>
+					<!-- BEGIN jaxb2-maven-plugin Fix for JDK 11 -->
+                    <dependency>
+                        <groupId>org.glassfish.jaxb</groupId>
+                        <artifactId>jaxb-xjc</artifactId>
+                        <version>2.3.2</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.sun.activation</groupId>
+                        <artifactId>jakarta.activation</artifactId>
+                        <version>1.2.1</version>
+                    </dependency>
+                    <!-- END jaxb2-maven-plugin Fix for JDK 11 -->
+                </dependencies>
+			</plugin>
+
+			<!-- IDE usually doesn't see -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>target/generated-sources/jaxb</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

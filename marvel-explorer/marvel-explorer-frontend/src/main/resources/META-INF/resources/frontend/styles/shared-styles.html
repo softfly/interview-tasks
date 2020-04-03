@@ -1,0 +1,70 @@
+<custom-style>
+    <style>
+    body {
+    	width: 100% !important;/*fix for x-scrollbar*/
+    }
+    p {
+    	width: 100%;/*fix for IE*/
+    }
+    .mainLayout {
+		flex-wrap: wrap;
+  	}
+  	@media only screen and (min-width: 1366px) {
+  		.mainLayout {
+			flex-wrap: nowrap;
+  		}
+  	}
+  	 .charactersLayout {
+  		width: 100%;
+  		min-height: 400px;
+  	}
+  	@media only screen and (min-width: 1366px) {
+  		.charactersLayout {
+			max-width: 300px;
+		}
+  	}
+  	@media only screen and (min-width: 1366px) {
+	  	.characterLayout {
+	  		overflow: overlay;
+	  	}
+	}
+	.characterInnerLayout {
+		flex-wrap: wrap;
+		width: 100%;
+  	}
+  	@media only screen and (min-width: 1366px) {
+  		.characterInnerLayout {
+			flex-wrap: nowrap;
+  		}
+  	}
+  	.characterRightLayout {
+  		width: 100%;
+  	}
+  	.characterLayout label {
+  		margin-top: 5px;
+    	font-size: small;
+  	}
+  	.characterLayout h1 {
+		margin: 0px 0px 0px 0px;
+    	font-size: 1.9em;
+  	}
+ 	.characterLayout .thumbnail {
+		width: 100%;
+	}
+	.characterLayout .thumbnail img {
+		width: 100%;
+	}
+  	@media only screen and (min-width: 1366px) {
+		.characterLayout .thumbnail {
+			width: 800px;
+		}
+		.characterLayout .thumbnail img {
+			width: 800px;
+		}
+		.characterRightLayout {
+  			width: calc(100% - 800px);
+  		}
+	}
+
+    </style>
+</custom-style>

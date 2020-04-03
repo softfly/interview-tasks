@@ -1,0 +1,13 @@
+.spinner-container {
+    height: 360px;
+    width: 100%;
+    position: fixed;
+}
+.spinner-container mat-spinner {
+    margin: 10% auto 0 auto;
+}
+.mat-paginator-sticky {
+    bottom: 0px;
+    position: sticky;
+    z-index: 10;
+ }
